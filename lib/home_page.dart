@@ -1,6 +1,7 @@
 import 'package:allen/feature_box.dart';
 import 'package:allen/pallete.dart';
 import 'package:flutter/material.dart';
+import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
 class Homepage extends StatefulWidget {
@@ -12,6 +13,7 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   final speechToText = SpeechToText();
+  String lastWords = '';
 
   @override
   void initState() {
@@ -23,6 +25,29 @@ class _HomepageState extends State<Homepage> {
      await speechToText.initialize();
      setState(() {});
   }
+
+  void _startListening() async {
+    await speechToText.listen(onResult: _onSpeechResult);
+    setState(() {});
+  }
+
+  void _stopListening() async {
+    await speechToText.stop();
+    setState(() {});
+  }
+
+  void _onSpeechResult(SpeechRecognitionResult result) {
+    setState(() {
+      lastWords = result.recognizedWords;
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    speechToText.stop();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
