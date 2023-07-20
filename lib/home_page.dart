@@ -1,6 +1,7 @@
 import 'package:allen/feature_box.dart';
 import 'package:allen/pallete.dart';
 import 'package:flutter/material.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -10,11 +11,17 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  final speechToText = SpeechToText();
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    initSpeechToText();
+  }
+
+  Future<void> initSpeechToText() async {
+     await speechToText.initialize();
+     setState(() {});
   }
   @override
   Widget build(BuildContext context) {
