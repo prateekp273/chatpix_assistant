@@ -4,6 +4,7 @@ import 'package:allen/secrets.dart';
 import 'package:http/http.dart' as http;
 
 class OpenAIService {
+  final List<Map<String, String>> messages = [];
   Future<String> isArtPromptAPI(String prompt) async {
     try {
       final res = await http.post(
@@ -48,6 +49,10 @@ class OpenAIService {
     }
   }
   Future<String> chatGPTAPI(String prompt) async {
+    messages.add({
+      'role': 'user',
+      'content': prompt,
+    });
     try {
       final res = await http.post(
         Uri.parse('https://api.openai.com/v1/chat/completions'),
