@@ -101,15 +101,14 @@ class OpenAIService {
       );
 
       if (res.statusCode ==200) {
-        String content =
-        jsonDecode(res.body)['choices'][0]['message']['content'];
-        content = content.trim();
+        String imageUrl = jsonDecode(res.body)['data'][0]['url'];
+        imageUrl = imageUrl.trim();
 
         messages.add({
           'role': 'assistant',
-          'content': content,
+          'content': imageUrl,
         });
-        return content;
+        return imageUrl;
       }
       return 'An internal error occurred';
     } catch (e) {
