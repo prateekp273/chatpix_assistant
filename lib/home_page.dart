@@ -26,12 +26,12 @@ class _HomepageState extends State<Homepage> {
      setState(() {});
   }
 
-  void _startListening() async {
+  Future<void> startListening() async {
     await speechToText.listen(onResult: _onSpeechResult);
     setState(() {});
   }
 
-  void _stopListening() async {
+  Future<void> stopListening() async {
     await speechToText.stop();
     setState(() {});
   }
@@ -157,7 +157,15 @@ class _HomepageState extends State<Homepage> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Pallete.firstSuggestionBoxColor,
-        onPressed: () {},
+        onPressed: () async {
+          if (await speechToText.hasPermission && speechToText.isNotListening) {
+           await startListening();
+          } else if(speechToText.isListening) {
+           await stopListening();
+          } else {
+            initSpeechToText();
+          }
+        },
         child: const Icon(Icons.mic),
       ),
 
