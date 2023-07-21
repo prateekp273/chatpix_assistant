@@ -163,7 +163,8 @@ class _HomepageState extends State<Homepage> {
           if (await speechToText.hasPermission && speechToText.isNotListening) {
            await startListening();
           } else if(speechToText.isListening) {
-            await openAIService.isArtPromptAPI(lastWords);
+          final speech = await openAIService.isArtPromptAPI(lastWords);
+          print(speech);
            await stopListening();
           } else {
             initSpeechToText();
