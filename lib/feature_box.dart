@@ -18,7 +18,6 @@ class FeatureBox extends StatelessWidget {
       margin: const EdgeInsets.symmetric(
         horizontal: 35,
         vertical: 10,
-
       ),
       decoration: BoxDecoration(
         color: color,
@@ -35,15 +34,14 @@ class FeatureBox extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-              headerText,
-              style: const TextStyle(
-                fontFamily: 'Cera Pro',
-                color: Pallete.blackColor,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-
+                headerText,
+                style: const TextStyle(
+                  fontFamily: 'Cera Pro',
+                  color: Pallete.blackColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
             ),
             const SizedBox(height: 3),
             Padding(
@@ -53,13 +51,9 @@ class FeatureBox extends StatelessWidget {
                 style: const TextStyle(
                   fontFamily: 'Cera Pro',
                   color: Pallete.blackColor,
-
-
-
                 ),
               ),
             ),
-
           ],
         ),
       ),
