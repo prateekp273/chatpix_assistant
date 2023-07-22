@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Allen',
+      title: 'Lyra',
       theme: ThemeData.light(useMaterial3: true).copyWith(
         scaffoldBackgroundColor: Pallete.whiteColor,
         appBarTheme: const AppBarTheme(
@@ -23,4 +23,5 @@ class MyApp extends StatelessWidget {
       home: const HomePage(),
     );
   }
+
 }
