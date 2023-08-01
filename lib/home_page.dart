@@ -146,6 +146,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+
             if (generatedImageUrl != null)
               Padding(
                 padding: const EdgeInsets.all(10.0),
